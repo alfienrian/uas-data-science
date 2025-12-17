@@ -209,15 +209,19 @@ Fitur-fitur akademik semester pertama dan kedua menunjukkan korelasi yang cukup 
 
 ### 6.1 Model 1 — Baseline
 
-**Model:** Logistic Regression
-**Alasan:** Sederhana dan interpretatif
-**Hasil Awal:** Akurasi sekitar 75%
+Alasan Pemilihan:
+Model ini dipilih sebagai baseline untuk memberikan gambaran performa minimum yang dapat dicapai oleh model sederhana. Logistic Regression juga relatif stabil pada data tabular dan mampu melakukan generalisasi yang baik ketika hubungan antar fitur bersifat mendekati linear.
 
-### 6.2 Model 2 — Advanced ML
+Hasil Awal:
+Berdasarkan hasil evaluasi pada data uji, model Logistic Regression menghasilkan nilai accuracy sebesar sekitar 76% dan F1-score sekitar 75%. Hasil ini menunjukkan bahwa model baseline sudah mampu menangkap pola utama dalam data, sehingga menjadi pembanding yang kuat bagi model lain.
 
-**Model:** Random Forest
-**Keunggulan:** Robust dan non-linear
-**Hasil:** Akurasi meningkat dibanding baseline
+### 6.2 Model 2 — Random Forest
+
+Alasan Pemilihan:
+Random Forest dipilih sebagai model advanced karena kemampuannya dalam menangani data tabular dengan fitur campuran (numerik dan kategorikal) serta ketahanannya terhadap overfitting. Selain itu, model ini sering digunakan sebagai standar kuat pada berbagai tugas klasifikasi tabular.
+
+Hasil Model:
+Hasil eksperimen menunjukkan bahwa Random Forest menghasilkan nilai accuracy dan F1-score yang sebanding dengan model baseline, dengan perbedaan performa yang relatif kecil. Hal ini mengindikasikan bahwa pola dalam data cukup sederhana sehingga model linear dan ensemble memberikan performa yang hampir setara.
 
 ### 6.3 Model 3 — Deep Learning
 
@@ -238,10 +242,9 @@ Fitur-fitur akademik semester pertama dan kedua menunjukkan korelasi yang cukup 
 * Epochs: 30
 * Batch size: 32
 
-**Analisis Training:**
+Analisis Training
 
-* Tidak terjadi overfitting signifikan
-* Model konvergen dengan baik
+Berdasarkan kurva training dan validation loss serta accuracy, model deep learning menunjukkan proses pembelajaran yang stabil dan konvergen. Tidak ditemukan perbedaan yang signifikan antara nilai training dan validation, sehingga tidak terdapat indikasi overfitting yang kuat. Namun, performa akhir model deep learning pada data uji masih berada di bawah model baseline dan Random Forest.
 
 
 ### 6.4 Training History Visualization (Deep Learning)
