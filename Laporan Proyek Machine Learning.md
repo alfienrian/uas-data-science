@@ -170,38 +170,75 @@ Fitur-fitur akademik semester pertama dan kedua menunjukkan korelasi yang cukup 
 
 ## 5. DATA PREPARATION
 
+Tahap data preparation dilakukan untuk memastikan bahwa data yang digunakan dalam proses pemodelan memiliki kualitas yang baik dan sesuai dengan kebutuhan algoritma machine learning. Proses ini mencakup pembersihan data, transformasi fitur, serta pembagian data untuk pelatihan dan pengujian model.
+
+---
+
 ### 5.1 Data Cleaning
 
-* Pemeriksaan missing values
-* Penghapusan data duplikat
-* Konversi tipe data jika diperlukan
+Pada tahap ini dilakukan beberapa langkah pembersihan data, yaitu:
+
+1. **Pemeriksaan Missing Values**
+   Dataset diperiksa untuk mendeteksi adanya nilai yang hilang pada setiap fitur. Hasil pemeriksaan menunjukkan bahwa dataset tidak memiliki missing values, sehingga tidak diperlukan proses imputasi data.
+
+2. **Penghapusan Data Duplikat**
+   Data duplikat diperiksa dan dihapus untuk mencegah bias dalam proses pelatihan model. Penghapusan duplikasi dilakukan untuk memastikan bahwa setiap baris data merepresentasikan satu observasi yang unik.
+
+3. **Konversi Tipe Data**
+   Tipe data pada setiap fitur diperiksa untuk memastikan kesesuaian antara representasi data dan makna fitur. Tidak ditemukan ketidaksesuaian tipe data yang signifikan, sehingga konversi tipe data hanya dilakukan apabila diperlukan.
+
+---
 
 ### 5.2 Feature Engineering
 
-* Tidak dibuat fitur baru
-* Feature selection implicit melalui model
+Pada penelitian ini tidak dilakukan pembuatan fitur baru secara eksplisit. Seluruh fitur yang tersedia pada dataset dipertahankan karena memiliki relevansi konseptual terhadap status akademik mahasiswa.
+
+Selain itu, proses **feature selection** dilakukan secara implisit melalui algoritma yang digunakan, terutama pada model Random Forest yang secara internal memilih fitur yang paling informatif. Pendekatan ini dipilih untuk menjaga kesederhanaan pipeline serta menghindari overfitting pada dataset dengan ukuran terbatas.
+
+---
 
 ### 5.3 Data Transformation
 
-* Encoding kategorikal menggunakan One-Hot Encoding
-* Scaling numerik menggunakan StandardScaler
+Untuk mempersiapkan data agar dapat diproses oleh model machine learning dan deep learning, dilakukan beberapa transformasi sebagai berikut:
+
+1. **Encoding Kategorikal**
+   Fitur kategorikal diubah menjadi representasi numerik menggunakan **One-Hot Encoding**. Metode ini dipilih karena tidak memberikan asumsi ordinal pada kategori dan sesuai untuk model linear maupun non-linear.
+
+2. **Scaling Fitur Numerik**
+   Fitur numerik dinormalisasi menggunakan **StandardScaler**, sehingga memiliki rata-rata nol dan deviasi standar satu. Proses scaling dilakukan untuk memastikan bahwa setiap fitur memiliki kontribusi yang seimbang, terutama pada model yang sensitif terhadap skala data seperti Logistic Regression dan neural network.
+
+Seluruh proses transformasi dilakukan menggunakan pipeline preprocessing untuk memastikan konsistensi antara data training dan data uji.
+
+---
 
 ### 5.4 Data Splitting
 
-* Training set: 80%
-* Test set: 20%
-* Stratified split untuk menjaga distribusi kelas
+Dataset dibagi menjadi dua bagian, yaitu:
+
+* **Training set:** 80% dari total data
+* **Test set:** 20% dari total data
+
+Pembagian data dilakukan menggunakan **stratified split** untuk mempertahankan proporsi kelas target pada data training dan data uji. Strategi ini dipilih untuk menghindari bias akibat ketidakseimbangan distribusi kelas dan memastikan evaluasi model yang lebih representatif.
+
+---
 
 ### 5.5 Data Balancing
 
-* Tidak dilakukan oversampling
-* Penanganan imbalance melalui metrik evaluasi weighted
+Pada penelitian ini tidak dilakukan teknik oversampling atau undersampling seperti SMOTE. Sebagai gantinya, ketidakseimbangan data ditangani pada tahap evaluasi dengan menggunakan metrik **weighted F1-score**, yang mempertimbangkan proporsi setiap kelas dalam perhitungan performa model.
 
-### 5.6 Ringkasan
+Pendekatan ini dipilih untuk menjaga distribusi data asli serta menghindari potensi noise tambahan yang dapat muncul akibat proses sintetik pada oversampling.
 
-1. **Apa:** Membersihkan dan mentransformasi data
-2. **Mengapa:** Agar model belajar secara optimal
-3. **Bagaimana:** Pipeline preprocessing scikit-learn
+---
+
+### 5.6 Ringkasan Data Preparation
+
+Secara ringkas, tahap data preparation dilakukan dengan:
+
+1. **Membersihkan data** dari nilai hilang dan duplikasi
+2. **Mempertahankan seluruh fitur** tanpa pembuatan fitur baru
+3. **Mentransformasi data** melalui encoding dan scaling
+4. **Membagi data** secara stratified untuk training dan testing
+5. **Menangani imbalance** melalui pemilihan metrik evaluasi yang tepat
 
 ---
 
