@@ -20,11 +20,11 @@ env/
 # =========================
 # Data & Artifacts
 # =========================
-data/
-models/
-*.pkl
-*.h5
-*.keras
+#data/
+# models/
+# *.pkl
+# *.h5
+# *.keras
 
 # =========================
 # Logs & Outputs

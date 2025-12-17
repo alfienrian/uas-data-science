@@ -50,7 +50,7 @@ Proyek ini bertujuan membangun dan membandingkan beberapa model ML dan DL untuk 
 **Referensi:**
 
 * Goodfellow, I., Bengio, Y., & Courville, A. (2016). *Deep Learning*. MIT Press.
-* Cortez, P., & Silva, A. (2008). Using data mining to predict secondary school student performance. *EUROSIS*.
+* Lakkaraju, H., Aguiar, E., Shan, C., Miller, D., Bhanpuri, N., Ghani, R., & Addison, K. L. (2015). *A machine learning framework to identify students at risk of adverse academic outcomes.* KDD.
 
 ---
 
@@ -127,7 +127,9 @@ UCI Machine Learning Repository – *Predict Students' Dropout and Academic Succ
 ### 4.4 Exploratory Data Analysis (EDA)
 
 **Visualisasi 1:** Distribusi Status Mahasiswa (Target)
+
 ![](./images/chartbar_distribusi-target.png)
+
 **Deskripsi:**
 Visualisasi ini menunjukkan jumlah mahasiswa pada masing-masing kelas target, yaitu Dropout, Enrolled, dan Graduate.
 
@@ -135,7 +137,9 @@ Visualisasi ini menunjukkan jumlah mahasiswa pada masing-masing kelas target, ya
 Distribusi kelas target tidak sepenuhnya seimbang, dengan kelas Graduate memiliki jumlah data paling banyak. Kondisi ini mengindikasikan adanya potensi class imbalance, sehingga pada tahap evaluasi digunakan metrik yang mempertimbangkan distribusi kelas seperti weighted F1-score.
 
 **Visualisasi 2:** Admission Grade vs Target
+
 ![](./images/boxplot_admission-grade.png)
+
 **Deskripsi:**
 Boxplot digunakan untuk membandingkan distribusi nilai masuk (admission grade) pada setiap kelas target.
 
@@ -249,19 +253,31 @@ Visualisasi:
 
 ![](./images/training-validation.png)
 
-Insight:
+**Insight:** <br>
 Kurva loss menunjukkan tren menurun dan perbedaan antara training dan validation relatif kecil, yang mengindikasikan bahwa model tidak mengalami overfitting secara signifikan dan telah mencapai konvergensi.
+
 ---
 
 ## 7. EVALUATION
 
 ### 7.1 Metrik
 
-* Accuracy
-* Precision
-* Recall
-* F1-Score
-* Confusion Matrix
+Evaluasi model dilakukan menggunakan beberapa metrik yang relevan untuk tugas klasifikasi multikelas, yaitu:
+
+**Accuracy** <br>
+Mengukur proporsi prediksi yang benar terhadap seluruh data uji. Metrik ini digunakan sebagai gambaran umum performa model.
+
+**Precision** <br>
+Mengukur tingkat ketepatan prediksi model pada setiap kelas, yaitu rasio prediksi benar terhadap seluruh prediksi pada kelas tersebut.
+
+**Recall** <br>
+Mengukur kemampuan model dalam mengidentifikasi seluruh data yang benar pada masing-masing kelas.
+
+**F1-Score (Weighted)** <br>
+Merupakan rata-rata harmonik antara precision dan recall. Pada penelitian ini digunakan weighted F1-score untuk memperhitungkan ketidakseimbangan distribusi kelas.
+
+**Confusion Matrix** <br>
+Digunakan untuk menganalisis kesalahan klasifikasi model dengan menampilkan jumlah prediksi benar dan salah pada setiap kelas target.
 
 ### 7.2 Hasil Evaluasi
 
@@ -319,18 +335,62 @@ Proyek ini dapat menjadi dasar sistem prediksi risiko dropout mahasiswa.
 
 ### 10.1 Repository
 
-Repository berisi notebook, kode, dan dokumentasi lengkap.
+Github Repository: [https://github.com/alfienrian/uas-data-science](https://github.com/alfienrian/uas-data-science)
+
+### 📁 Struktur Folder
+```
+project/
+│
+├── data/                   # Dataset (tidak di-commit, download manual)
+│
+├── notebooks/              # Jupyter notebooks
+│   └── ML_Project.ipynb
+│
+├── src/                    # Source code
+│   
+├── models/                 # Saved models
+│   ├── model_baseline.pkl
+│   ├── model_rf.pkl
+│   └── model_cnn.h5
+│
+├── images/                 # Visualizations
+│   └── r
+│
+├── requirements.txt        # Dependencies
+├── .gitignore
+└── README.md
+```
 
 ### 10.2 Environment
 
-```txt
-Python 3.10
-numpy
-pandas
-scikit-learn
-matplotlib
-seaborn
-tensorflow
+Python Version: >= 3.12.10
+
+Buat environment menggunakan venv agar package yang ada di sistem tidak bentrok
 ```
+python -m venv venv
+venv\Scripts\activate
+```
+
+Install Dependencies:
+```
+pip install -r requirements.txt
+```
+
+### Menjalankan Script Python (Batch Training)
+
+Pastikan dataset berada pada folder `data/` dengan nama `data.csv`
+
+Jalankan script utama:
+
+```
+python src/main.py
+```
+
+Script akan:
+- Meload dataset
+- Melakukan preprocessing
+- Melatih 3 model (Baseline, Random Forest, Deep Learning)
+- Menyimpan model ke folder `models/`
+
 
 ---
