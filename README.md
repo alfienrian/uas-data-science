@@ -4,7 +4,7 @@
 
 * **Nama:** Amro Alfien Syachrian Nadzief (233307004)
 * **Repo:** https://github.com/alfienrian/uas-data-science
-* **Video:** [Link Demo / Presentasi]
+* **Video:** https://drive.google.com/file/d/18QZL5ZMBYXkRPEGyknZUlo-TO7pnjskj/view?usp=sharing
 
 ---
 

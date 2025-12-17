@@ -12,7 +12,7 @@
 **Dosen Pengampu:** Gus Nanang Syaifuddiin, S.Kom., M.Kom. <br>
 **Tahun Akademik:** 2024/2025 <br>
 **Link GitHub Repository:** https://github.com/alfienrian/uas-data-science <br>
-**Link Video Pembahasan:** [URL Video]
+**Link Video Pembahasan:** https://drive.google.com/file/d/18QZL5ZMBYXkRPEGyknZUlo-TO7pnjskj/view?usp=sharing
 
 ---
 
