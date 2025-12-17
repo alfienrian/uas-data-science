@@ -29,6 +29,29 @@
 * Mengembangkan model prediksi status akademik mahasiswa
 * Membandingkan performa model klasik dan deep learning
 
+## 📁 Struktur Folder
+```
+project/
+│
+├── data/                   # Dataset (tidak di-commit, download manual)
+│
+├── notebooks/              # Jupyter notebooks
+│   └── ML_Project.ipynb
+│
+├── src/                    # Source code
+│   
+├── models/                 # Saved models
+│   ├── model_baseline.pkl
+│   ├── model_rf.pkl
+│   └── model_cnn.h5
+│
+├── images/                 # Visualizations
+│   └── r
+│
+├── requirements.txt        # Dependencies
+├── .gitignore
+└── README.md
+```
 ---
 
 ## **3. 📊 Dataset**
@@ -71,11 +94,11 @@
 
 **Metrik:** Accuracy & F1-Score
 
-| Model         | Accuracy | Catatan          |
-| ------------- | -------- | ---------------- |
-| Baseline      | ~0.75    | Model sederhana  |
-| Advanced      | ~0.80    | Lebih stabil     |
-| Deep Learning | ~0.82    | Performa terbaik |
+| Model             | Accuracy | F1-Score         |
+| ----------------- | -------- | ---------------- |
+| Baseline          | 0.7683   | 0.7531           |
+| Random Forest     | 0.7672   | 0.7514           |
+| Deep Learning     | 0.7503   | 0.7429           |
 
 ---
 
@@ -97,6 +120,32 @@
 
 ## **9. 🔁 Reproducibility**
 
-Gunakan environment Python (Colab) + requirements.txt
+### Environment
+
+Python Version: >= 3.12.10
+
+```
+python -m venv venv
+venv\Scripts\activate
+
+Install Dependencies:
+pip install -r requirements.txt
+```
+
+### Menjalankan Script Python (Batch Training)
+
+Pastikan dataset berada pada folder `data/` dengan nama `data.csv`
+
+Jalankan script utama:
+
+```
+python src/main.py
+```
+
+Script akan:
+- Meload dataset
+- Melakukan preprocessing
+- Melatih 3 model (Baseline, Random Forest, Deep Learning)
+- Menyimpan model ke folder `models/`
 
 ---
