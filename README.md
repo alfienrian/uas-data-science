@@ -124,11 +124,14 @@ project/
 
 Python Version: >= 3.12.10
 
+Buat environment menggunakan venv agar package yang ada di sistem tidak bentrok
 ```
 python -m venv venv
 venv\Scripts\activate
+```
 
 Install Dependencies:
+```
 pip install -r requirements.txt
 ```
 
