@@ -1,6 +1,4 @@
-# 📘 Judul Proyek
-
-**Predicting Student Dropout and Academic Success Using Machine Learning**
+# 📘 Predicting Student Dropout and Academic Success Using Machine Learning
 
 ## 👤 Informasi
 
